@@ -1,20 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Display from '../Display/Display';
 import Keypad from '../Keypad/Keypad';
 
-const operationKey = {
-  "=": 0,
-  "+": function(first, second) {return first + second},
-  "-": function(first, second) {return first - second},
-  "*": function(first, second) {return first * second},
-  "/": function(first, second) {return first / second},
-  "%": function(number) {return number / 100},
-  '±': function(number) {return -number},
-}
-
 function App() {
-
+const [display, setDisplay] = useState('0');
     return (
       <div className='app'>
         <div className='mainArea'>
