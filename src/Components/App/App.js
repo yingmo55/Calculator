@@ -1,15 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Display from '../Display/Display';
-import Keypad from '../Keypad/Keypad';
+import {KeypadContainer} from '../../Containers/KeypadContainer/KeypadContainer';
 
 function App() {
-const [display, setDisplay] = useState('0');
+const [display, setDisplay] = useState(0);
+
+const  changeDisplay = (input) => {
+  setDisplay(input);
+}
+
     return (
       <div className='app'>
         <div className='mainArea'>
-          <Display />
-          <Keypad />
+          <Display display={display} />
+          <KeypadContainer changeDisplay={changeDisplay} />
          </div>
       </div>
     )
