@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import Display from '../Display/Display';
 import Keypad from '../Keypad/Keypad';
@@ -14,13 +14,6 @@ const operationKey = {
 }
 
 function App() {
-  const [firstInput, setFirstInput] = useState(0);
-
-  const [secondInput, setSecondInput] = useState(0);
-
-  const handleInput = (input) => {
-    setFirstInput((prev)=> prev + input)
-  }
 
     return (
       <div className='app'>
