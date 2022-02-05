@@ -17,8 +17,6 @@ const buttons =
      [1, 2, 3, '+'],
      [0, '.', '=']]
 
-
-
 const buttonsRender = buttons.map((row, index) => 
     row.map((item, index2) => 
     <Button value={item} 
