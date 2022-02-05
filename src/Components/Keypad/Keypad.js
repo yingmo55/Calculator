@@ -1,41 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '../Button/Button';
 import './Keypad.css';
 
-class Keypad extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleInput = this.handleInput.bind(this);
-    }
-    handleInput(number){
-      this.props.onClick(number);
-    }
+function Keypad(props) {
 
-    render(){
-        return(
-            <div className='keypad'>
-                <Button value='C' className='function' onClick={this.handleInput}/>
-                <Button value='±' className='function' onClick={this.handleInput}/>
-                <Button value='%' className='function' onClick={this.handleInput}/>
-                <Button value='/' className='operation' onClick={this.handleInput}/>
-                <Button value='7' onClick={this.handleInput}/>
-                <Button value='8' onClick={this.handleInput}/>
-                <Button value='9' onClick={this.handleInput}/>
-                <Button value='*' className='operation' onClick={this.handleInput}/>
-                <Button value='4' onClick={this.handleInput}/>
-                <Button value='5' onClick={this.handleInput}/>
-                <Button value='6' onClick={this.handleInput}/>
-                <Button value='-' className='operation' onClick={this.handleInput}/>
-                <Button value='1' onClick={this.handleInput}/>
-                <Button value='2' onClick={this.handleInput}/>
-                <Button value='3' onClick={this.handleInput}/>
-                <Button value='+' className='operation' onClick={this.handleInput}/>
-                <Button id='zero' value='0' onClick={this.handleInput}/>
-                <Button value='.' onClick={this.handleInput}/>
-                <Button value='=' className='operation' onClick={this.handleInput}/>
-            </div>
-        );
-    }
+const handleChange = props.handleChange;
+
+const buttons = 
+    [['C', '±', '%', '/'],
+     [7, 8, 9, '*'],
+     [4, 5, 6, '-'],
+     [1, 2, 3, '+'],
+     [0, '.', '=']]
+
+const buttonsRender = buttons.map((row, index) => 
+    row.map((item, index2) => 
+    <Button value={item} 
+            className={typeof(item) === 'number' ? 'number' : 'operation'}
+            id={item === 0 ? 'zero': "key" + index + index2}
+            key={"key" +index+index2}
+            onClick={handleChange}
+    />
+    )
+    )
+
+    return(
+        <div className='keypad' >
+            {buttonsRender}
+        </div>
+    );
 }
 
 export default Keypad
