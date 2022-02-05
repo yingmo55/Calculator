@@ -113,8 +113,7 @@ useEffect(()=> {
     if (hasFirstInput) {
       setIsSecondNumber(true)
     }
-  }, 
-  [currentNumber])
+  }, [currentNumber]) // eslint-disable-line react-hooks/exhaustive-deps
 
 return(
   <Keypad handleChange={isInput}/>
