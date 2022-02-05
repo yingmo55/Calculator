@@ -6,10 +6,6 @@ function Keypad(props) {
 
 const handleChange = props.handleChange;
 
-const handleInput = () => {
-    handleChange()
-}
-
 const buttons = 
     [['C', '±', '%', '/'],
      [7, 8, 9, '*'],
