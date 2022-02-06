@@ -40,6 +40,20 @@ const operationFunction = () => {
   setTimeout(()=>setHasFirstInput(true), 0)
 }
 
+const specialOperator = input => {
+  const plusPercentage = input => 
+  { input === "±" ? setCurrentNumber(-currentNumber) : setCurrentNumber(currentNumber / 100);}
+  if (isSecondNumber) {
+      plusPercentage(input)
+  } else {
+      setHasFirstInput(false);
+      plusPercentage(input);
+      setOperator('');
+      setIsFirstNumber(true);
+      setTimeout(()=>setHasFirstInput(true), 0);
+  }
+}
+
 const isInput = (input) => {
   if (typeof(input) === 'number') {
     changeNumber(input)
@@ -58,26 +72,10 @@ const isInput = (input) => {
         reset();
         break;
       case "±":
-        if (isSecondNumber) {
-          setCurrentNumber(-currentNumber);
-        } else {
-        setHasFirstInput(false)
-        setCurrentNumber(-currentNumber);
-        setOperator('')
-        setIsFirstNumber(true)
-        setTimeout(()=>setHasFirstInput(true), 0)
-        }
+        specialOperator(input);
         break;
       case "%":
-        if (isSecondNumber){
-          setCurrentNumber(currentNumber / 100);
-        } else {
-        setHasFirstInput(false)
-        setCurrentNumber(currentNumber / 100);
-        setOperator('')
-        setIsFirstNumber(true)
-        setTimeout(()=>setHasFirstInput(true), 0)
-      }
+        specialOperator(input);
         break;
       case ".":
         if (!isDecimal){
@@ -101,19 +99,18 @@ const  changeNumber = (input) => {
   if (currentNumber === 0 || isFirstNumber) {
     setCurrentNumber(input)
     setIsFirstNumber(false)
+    if(hasFirstInput){
+      setIsSecondNumber(true)
+    }
   } else {
     setCurrentNumber((prev)=> prev + input.toString())
-
   }
 }
 
 useEffect(()=> {
     changeDisplay(currentNumber);
     !hasFirstInput ?setFirstInput(parseFloat(currentNumber)) : setSecondInput(parseFloat(currentNumber));
-    if (hasFirstInput) {
-      setIsSecondNumber(true)
-    }
-  }, [currentNumber]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [currentNumber, isSecondNumber]) // eslint-disable-line react-hooks/exhaustive-deps
 
 return(
   <Keypad handleChange={isInput}/>
