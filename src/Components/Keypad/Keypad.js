@@ -13,11 +13,14 @@ const buttons =
      [1, 2, 3, '+'],
      [0, '.', '=']]
 
+
 const buttonsRender = buttons.map((row, index) => 
     row.map((item, index2) => 
     <Button value={item} 
-            className={typeof(item) === 'number' ? 'number' : 'operation'}
-            id={item === 0 ? 'zero': "key" + index + index2}
+            className={typeof(item) === 'number' ? 'number' :
+            index2 === 3 || (index === 4 && index2 === 2) ? 'function' : 'operation'}
+            id={item === 0 ? 'zero': 
+            item === '.' ? 'dot' : "key" + index + index2}
             key={"key" +index+index2}
             onClick={handleChange}
     />

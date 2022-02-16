@@ -1,4 +1,4 @@
-button {
+button, #dot {
     border: none;
     width: 95%;
     height: 95%;
@@ -6,16 +6,16 @@ button {
     font-size: larger;
 }
 
-button:hover {
+button:hover, #dot:hover {
     background-color: darkgray;
 }
 
-button:focus {
+button:focus, #dot:focus {
     outline: 2px solid blue; 
     background-color: darkgray;
 }
 
-button:active {
+button:active, #dot:active {
     background-color: grey;
 }
 
