@@ -16,7 +16,7 @@ const  changeDisplay = (input) => {
         <div className='mainArea'>
           <Display display={display} />
           <KeypadContainer changeDisplay={changeDisplay} />
-         </div>
+        </div>
          <Footer />
       </div>
     )
