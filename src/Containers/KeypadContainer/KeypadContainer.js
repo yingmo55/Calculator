@@ -11,7 +11,6 @@ const operations = {
 
 export function KeypadContainer(props) {
 const changeDisplay = props.changeDisplay;
-const changeOperation = props.changeOperation;
 
 const [firstInput, setFirstInput] = useState(0);
 const [secondInput, setSecondInput] = useState(0);
