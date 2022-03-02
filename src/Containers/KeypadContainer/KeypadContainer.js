@@ -38,6 +38,7 @@ const operationFunction = () => {
   setCurrentNumber(result);
   setIsFirstNumber(true);
   setTimeout(()=>setHasFirstInput(true), 0)
+  setIsSecondNumber(false);
 }
 
 const specialOperator = input => {
