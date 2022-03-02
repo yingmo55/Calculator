@@ -11,6 +11,7 @@ const operations = {
 
 export function KeypadContainer(props) {
 const changeDisplay = props.changeDisplay;
+const changeOperator = props.changeOperator;
 
 const [firstInput, setFirstInput] = useState(0);
 const [secondInput, setSecondInput] = useState(0);
@@ -86,6 +87,7 @@ const isInput = (input) => {
       }
         break;
       case "=":
+        changeOperator("");
         if(operator && hasFirstInput) {
           return operationFunction();
         }
@@ -116,6 +118,10 @@ useEffect(()=> {
     changeDisplay(currentNumber);
     !hasFirstInput ?setFirstInput(parseFloat(currentNumber)) : setSecondInput(parseFloat(currentNumber));
   }, [currentNumber, isSecondNumber]) // eslint-disable-line react-hooks/exhaustive-deps
+
+useEffect(()=> {
+  changeOperator(operator);
+}, [operator])
 
 return(
   <Keypad handleChange={isInput}/>

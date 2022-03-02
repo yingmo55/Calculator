@@ -3,10 +3,12 @@ import './Display.css';
 
 function Display(props) {
 
-    let display = props.display;
+    const display = props.display;
+    const operationKey = props.operationKey;
+
     return(
         <div className='display'>
-            <p></p>
+            <p>{operationKey}</p>
             <p>{display}</p>
         </div>
     );
