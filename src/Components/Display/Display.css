@@ -9,10 +9,10 @@
     
 } 
 
-p {
+.display p {
     overflow: hidden;
     padding: 15px;
-    font-size: 2em;
+    font-size: 1.8em;
     color: whitesmoke;
     float: right;
 }
