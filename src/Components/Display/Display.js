@@ -7,7 +7,7 @@ function Display(props) {
     return(
         <div className='display'>
             <p></p>
-            <p>{display} </p>
+            <p>{display}</p>
         </div>
     );
 }
