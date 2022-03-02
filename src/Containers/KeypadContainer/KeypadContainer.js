@@ -121,7 +121,7 @@ useEffect(()=> {
 
 useEffect(()=> {
   changeOperator(operator);
-}, [operator])
+}, [operator]) // eslint-disable-line react-hooks/exhaustive-deps
 
 return(
   <Keypad handleChange={isInput}/>
