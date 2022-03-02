@@ -87,8 +87,12 @@ const isInput = (input) => {
         break;
       case "=":
         if(operator && hasFirstInput) {
-          operationFunction();
+          return operationFunction();
         }
+        let current = currentNumber;
+        reset();
+        setCurrentNumber(current);
+        setFirstInput(parseFloat(current));
         break;
       default:
         console.log('something went wrong')
