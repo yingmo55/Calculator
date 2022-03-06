@@ -6,23 +6,16 @@ import Footer from '../Footer/Footer';
 
 function App() {
 const [display, setDisplay] = useState(0);
-const [operationKey, setOperationKey] = useState('')
-
 const  changeDisplay = (input) => {
   setDisplay(input);
 }
 
-const changeOperator = input => {
-  setOperationKey(input)
-}
 
     return (
       <div className='app'>
         <div className='mainArea'>
-          <Display display={display}
-                   operationKey={operationKey} />
-          <KeypadContainer changeDisplay={changeDisplay}
-                          changeOperator={changeOperator} />
+          <Display display={display} />
+          <KeypadContainer changeDisplay={changeDisplay} />
         </div>
          <Footer />
       </div>
