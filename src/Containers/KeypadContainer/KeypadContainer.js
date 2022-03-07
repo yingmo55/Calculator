@@ -11,6 +11,7 @@ const operations = {
 
 export function KeypadContainer(props) {
 const changeDisplay = props.changeDisplay;
+const handleChangeOperationKey = props.handleChangeOperationKey
 
 const [firstInput, setFirstInput] = useState(0);
 const [secondInput, setSecondInput] = useState(0);
@@ -66,8 +67,14 @@ const isInput = (input) => {
     } else {
       !isSecondNumber? setOperator(input) : operationFunction();
     }
+
+    // update operation key since it contains operationKeys
+    handleChangeOperationKey(input);
   } else {
-    
+
+    // clear operation key since it doesn't contain operationKeys
+    handleChangeOperationKey("");
+
     switch(input){
       case 'C':
         reset();
