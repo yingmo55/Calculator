@@ -16,10 +16,10 @@ function Button(props) {
         }
         if(input === 'Enter'){
             return handleChange('=');
-        }else{
-            const value = props.value;
-            handleChange(value);
         }
+
+        const value = props.value;
+        return handleChange(value);
     }
 
     document.onkeydown = function(e){
