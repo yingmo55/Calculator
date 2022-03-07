@@ -2,55 +2,32 @@ import React from 'react';
 import './Button.css';
 
 function Button(props) {
-    const testFunction = props.onClick;
+    const handleChange = props.onClick;
+    const numbers = Array.from('1234567890');
+    const operators = Array.from('+-*/.');
 
     //HANDLE VALIDATED INPUT
     const handleInput = (input) => {
-        console.log(input)
-        if(input === '1' ||
-        input === '2' ||
-        input === '3' ||
-        input === '4' ||
-        input === '5' ||
-        input === '6' ||
-        input === '7' ||
-        input === '8' ||
-        input === '9' ||
-        input === '0'){
-            testFunction(parseInt(input));
-        }else if(input === '+' ||
-        input === '-' ||
-        input === '/' ||
-        input === '*'){
-            testFunction(input);
-        }else if(input === 'Enter'){
-            testFunction('=');
+        if(numbers.includes(input)){
+            return handleChange(parseInt(input));
+        }
+        if(operators.includes(input)){
+            return handleChange(input);
+        }
+        if(input === 'Enter'){
+            return handleChange('=');
         }else{
             const value = props.value;
-            testFunction(value)
+            handleChange(value);
         }
     }
 
-    //VALIDATE INPUT
-    document.onkeydown = function (e){
-        console.log(e.key)
-        if(e.key === '1' ||
-        e.key === '2' ||
-        e.key === '3' ||
-        e.key === '4' ||
-        e.key === '5' ||
-        e.key === '6' ||
-        e.key === '7' ||
-        e.key === '8' ||
-        e.key === '9' ||
-        e.key === '0' ||
-        e.key === '+' ||
-        e.key === '-' ||
-        e.key === '*' ||
-        e.key === '/' || 
-        e.key === 'Enter'){
-            handleInput(e.key);
-        }
+    document.onkeydown = function(e){
+        if(numbers.includes(e.key) ||
+           operators.includes(e.key) ||
+           e.key === 'Enter'){
+               handleInput(e.key)
+           }
     }
 
     return (
