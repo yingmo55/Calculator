@@ -2,11 +2,32 @@ import React from 'react';
 import './Button.css';
 
 function Button(props) {
-    const testFunction = props.onClick;
+    const handleChange = props.onClick;
+    const numbers = Array.from('1234567890');
+    const operators = Array.from('+-*/.');
 
-    const handleInput = () => {
+    //HANDLE VALIDATED INPUT
+    const handleInput = (input) => {
+        if(numbers.includes(input)){
+            return handleChange(parseInt(input));
+        }
+        if(operators.includes(input)){
+            return handleChange(input);
+        }
+        if(input === 'Enter'){
+            return handleChange('=');
+        }
+
         const value = props.value;
-        testFunction(value)
+        return handleChange(value);
+    }
+
+    document.onkeydown = function(e){
+        if(numbers.includes(e.key) ||
+           operators.includes(e.key) ||
+           e.key === 'Enter'){
+               handleInput(e.key)
+           }
     }
 
     return (
